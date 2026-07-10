@@ -3,5 +3,5 @@
 install script
 
 ```
-wget -qO - https://raw.githubusercontent.com/Lobanokivan11/kvantum-kde-sync/refs/heads/main/install.sh | bash
+wget -qO - https://raw.githubusercontent.com/Lobanokivan11/kvantum-kde-sync/refs/heads/main/install-online.sh | bash
 ```
