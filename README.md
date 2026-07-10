@@ -1,1 +1,1 @@
-# kvantum-kde-sync
+# Kvantum Theme to KDE Plasma Color Sync
