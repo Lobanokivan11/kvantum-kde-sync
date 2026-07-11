@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Kvantum Theme to KDE Plasma Color Sync
+Comment=Automated theme synchronization script
+Type=Service
+X-KDE-ServiceTypes=Plasma/Applet
+X-KDE-PluginInfo-Author=Lobanokivan11
+X-KDE-PluginInfo-Email=lobanokivan11@gmail.com
+X-KDE-PluginInfo-Name=kvantum-plasma-color-sync
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true

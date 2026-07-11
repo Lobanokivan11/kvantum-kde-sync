@@ -6,5 +6,5 @@ echo "Deleting Unit File..."
 rm -f ~/.config/systemd/user/kvantum-watcher.service
 systemctl --user daemon-reload
 echo "Deleting script..."
-rm -f ~/.local/bin/kvantum-theme-watcher.sh
+rm -f ~/.local/bin/kvantum-theme-watcher
 echo "Delete ended succesfully!"

@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Installing Script..."
 mkdir -p ~/.local/bin
-cp kvantum-theme-watcher.sh ~/.local/bin/kvantum-theme-watcher.sh 
+cp kvantum-theme-watcher ~/.local/bin/kvantum-theme-watcher
 chmod +x ~/.local/bin/kvantum-theme-watcher.sh
 echo "Installing Systemd Unit..."
 mkdir -p ~/.config/systemd/user
