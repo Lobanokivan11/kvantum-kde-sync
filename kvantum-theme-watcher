@@ -1,18 +1,28 @@
 #!/bin/bash
-
+set -x
 CONFIG_DIR="$HOME/.config/Kvantum"
 CONFIG_FILE="$CONFIG_DIR/kvantum.kvconfig"
 
 apply_theme() {
+    echo "[DEBUG] Checking Kvantum Config..."
     if [ -f "$CONFIG_FILE" ]; then
         THEME=$(grep -i '^theme=' "$CONFIG_FILE" | cut -d'=' -f2 | tr -d '[:space:]')
         if [ -n "$THEME" ]; then
-            plasma-apply-colorscheme "$THEME" > /dev/null 2>&1
+            echo "[DEBUG] Found Theme is : $THEME. Applying..."
+            plasma-apply-colorscheme "$THEME"
+        else
+            echo "[DEBUG] 'theme=' Line is empty or isn't found."
         fi
+    else
+        echo "[DEBUG] $CONFIG_FILE File Not found."
     fi
 }
 mkdir -p "$CONFIG_DIR"
 apply_theme
-while inotifywait -e modify,create -q "$CONFIG_DIR" > /dev/null 2>&1; do
+echo "[DEBUG] Monitoring $CONFIG_DIR..."
+while true; do
+    inotifywait -e modify,create "$CONFIG_DIR"
+    echo "[DEBUG] Change is Detected Reapplying Theme..."
     apply_theme
+    sleep 1
 done
