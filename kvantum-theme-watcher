@@ -28,8 +28,9 @@ mkdir -p "$CONFIG_DIR"
 apply_theme
 echo "[DEBUG] Monitoring $CONFIG_DIR..."
 
-inotifywait -e modify,create,moved_to "$CONFIG_DIR" | while read -r path action file; do
-    if [ "$file" = "kvantum.kvconfig" ]; then
+inotifywait -q -m -e modify,moved_to "$CONFIG_DIR" | while read -r directory event filename; do
+    if [ "$filename" = "kvantum.kvconfig" ]; then
+        echo "[DEBUG] Real change detected on $filename via $event. Waiting for flush..."
         sleep 0.5
         apply_theme
     fi
