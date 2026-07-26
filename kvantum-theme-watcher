@@ -1,7 +1,13 @@
 #!/bin/bash
-set -x
+
 CONFIG_DIR="$HOME/.config/Kvantum"
 CONFIG_FILE="$CONFIG_DIR/kvantum.kvconfig"
+
+while [ "$XDG_CURRENT_DESKTOP" != "KDE" ] && ! pgrep -x "plasmashell" > /dev/null; do
+    echo "[DEBUG] Waiting for KDE Plasma session to start..."
+    sleep 3
+done
+sleep 5
 
 apply_theme() {
     echo "[DEBUG] Checking Kvantum Config..."
@@ -17,9 +23,11 @@ apply_theme() {
         echo "[DEBUG] $CONFIG_FILE File Not found."
     fi
 }
+
 mkdir -p "$CONFIG_DIR"
 apply_theme
 echo "[DEBUG] Monitoring $CONFIG_DIR..."
+
 while true; do
     inotifywait -e modify,create "$CONFIG_DIR"
     echo "[DEBUG] Change is Detected Reapplying Theme..."
