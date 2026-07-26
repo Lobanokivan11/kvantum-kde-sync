@@ -1,6 +1,7 @@
 [Unit]
 Description=Kvantum Theme to KDE Plasma Color Sync
-After=graphical-session.target
+After=plasma-plasmashell.service graphical-session.target
+BindsTo=graphical-session.target
 
 [Service]
 Type=simple
@@ -9,4 +10,4 @@ Restart=on-failure
 RestartSec=5
 
 [Install]
-WantedBy=default.target
+WantedBy=plasma-plasmashell.service
